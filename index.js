@@ -30,7 +30,7 @@ const chooseVotingOption = async () => {
         const option = options[0];
         let param = await algodClient.getTransactionParams().do(); //get params
         let encoder = new TextEncoder();  //message encoder
-        if (option === "1") {
+        if (option === "0") {
             try {
                 let txn = await algosdk.makeAssetTransferTxnWithSuggestedParams(
                     recoveredAccount.addr,
@@ -44,6 +44,10 @@ const chooseVotingOption = async () => {
                 )
             let signedTxn = algosdk.signTransaction(txn, recoveredAccount.sk);
             const response = await algodClient.sendRawTransaction(signedTxn.blob).do();
+         console.log(`You just voted for candidate Zero,Your voting ID: ${response.txId}`);
+        }
+        catch(error) {
+            console.log("error voting for candidate Zero, try again later");
         }
 
     
