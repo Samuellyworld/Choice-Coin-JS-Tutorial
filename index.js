@@ -30,7 +30,11 @@ const chooseVotingOption = async () => {
         const option = options[0];
         let param = await algodClient.getTransactionParams().do(); //get params
         let encoder = new TextEncoder();  //message encoder
-        if (option === "0") {
+    // if there is no valid option 
+     if (!option) {
+         console.log('please select a valid option');
+     }
+      else  if (option === "0") {
             try {
                 let txn = await algosdk.makeAssetTransferTxnWithSuggestedParams(
                     recoveredAccount.addr,
@@ -51,6 +55,26 @@ const chooseVotingOption = async () => {
         }
 
     
+} else  if(option === "1"){
+    try {
+        let txn = await algosdk.makeAssetTransferTxnWithSuggestedParams(
+            recoveredAccount.addr,
+            voting_address,
+            undefined,
+            undefined,
+            1,
+            encoder.encode("Voting with Choice coin"),
+            ASSET_ID,
+            param
+        )
+    let signedTxn = algosdk.signTransaction(txn, recoveredAccount.sk);
+    const response = await algodClient.sendRawTransaction(signedTxn.blob).do();
+ console.log(`You just voted for candidate One,Your voting ID: ${response.txId}`);
+}
+catch(error) {
+    console.log("Error voting for candidate One, try again later");
+}
+
 }
     })
 }
