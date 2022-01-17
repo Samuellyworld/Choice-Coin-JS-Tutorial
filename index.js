@@ -10,3 +10,10 @@ const token = {
   "X-API-Key": "" //your API key gotten from purestake API, 
 };
 const algodClient = new algosdk.Algodv2(token, server, port);
+
+// create a testnet account with myalgowallet, keep the mmemonic key;
+const mnemonic = 'YOUR MNEMONIC HERE'; //the mmemonic 25 characters seperated by a whitespace should be imported here
+
+// get account from mmemonic key;
+const recoveredAccount = algosdk.mnemonicToSecretKey(mnemonic); 
+
