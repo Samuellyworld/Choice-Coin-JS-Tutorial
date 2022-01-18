@@ -90,13 +90,13 @@ const checkResult = async () => {
     
     
   //get the account information
-
     const accountInfo = await algodClient.accountInformation(recoveredAccount.addr).do();
     const assets = await accountInfo["assets"];
     for (const asset in assets) {
       if (asset["asset-id"] === ASSET_ID) {
         const amount = asset["amount"];
-
+ 
+          
         const assetInfo = algodClient.getAssetByID(ASSET_ID);
         const decimals = assetInfo["params"]["decimals"];
         const unit = assetInfo["params"]["unit-name"];
