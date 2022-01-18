@@ -34,9 +34,10 @@ const chooseVotingOption = async () => {
      if (!option) {
          console.log('please select a valid option');
      }
+     // if your option is candidate zero
       else  if (option === "0") {
             try {
-                let txn = await algosdk.makeAssetTransferTxnWithSuggestedParams(
+                let txn = algosdk.makeAssetTransferTxnWithSuggestedParams(
                     recoveredAccount.addr,
                     voting_address,
                     undefined,
@@ -51,13 +52,15 @@ const chooseVotingOption = async () => {
          console.log(`You just voted for candidate Zero,Your voting ID: ${response.txId}`);
         }
         catch(error) {
-            console.log("error voting for candidate Zero, try again later");
+            console.log("error voting for candidate Zero, Try again later");
         }
+        
+ } 
+ // if your option is candidate one
 
-    
-} else  if(option === "1"){
+ else  if(option === "1"){
     try {
-        let txn = await algosdk.makeAssetTransferTxnWithSuggestedParams(
+        let txn = algosdk.makeAssetTransferTxnWithSuggestedParams(
             recoveredAccount.addr,
             voting_address,
             undefined,
@@ -69,14 +72,17 @@ const chooseVotingOption = async () => {
         )
     let signedTxn = algosdk.signTransaction(txn, recoveredAccount.sk);
     const response = await algodClient.sendRawTransaction(signedTxn.blob).do();
- console.log(`You just voted for candidate One,Your voting ID: ${response.txId}`);
-}
-catch(error) {
-    console.log("Error voting for candidate One, try again later");
-}
+    console.log(`You just voted for candidate One,Your voting ID: ${response.txId}`);
+    }
+    catch(error) {
+        console.log("Error voting for candidate One, Try again later");
+    }
 
-}
+    }
     })
 }
+
+chooseVotingOption();
+
 
     
