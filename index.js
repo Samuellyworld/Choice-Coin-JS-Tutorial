@@ -1,4 +1,4 @@
-// all examples are portray using es6;
+// all examples are portrayed using es6;
 
 import algosdk from  'algosdk'; //importing algosdk
 import inquirer from 'inquirer'; // importing inquirer
@@ -84,5 +84,31 @@ const chooseVotingOption = async () => {
 
 chooseVotingOption();
 
+//check result
 
+const checkResult = async () => {
     
+    
+  //get the account information
+
+    const accountInfo = await algodClient.accountInformation(recoveredAccount.addr).do();
+    const assets = await accountInfo["assets"];
+    for (const asset in assets) {
+      if (asset["asset-id"] === ASSET_ID) {
+        const amount = asset["amount"];
+
+        const assetInfo = algodClient.getAssetByID(ASSET_ID);
+        const decimals = assetInfo["params"]["decimals"];
+        const unit = assetInfo["params"]["unit-name"];
+        const formattedAmount = amount / 10 ** decimals;
+
+        console.log(
+          `Account ${address} has ${formattedAmount} ${unit}`
+        );
+        return;
+      }
+    }
+    console.log(`Account ${address} must opt in to Asset ID ${ASSET_ID}`);
+  };
+
+checkResult();
