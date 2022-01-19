@@ -97,23 +97,28 @@ const checkResult = async () => {
   //get the account information
     const accountInfo =  await algodClient.accountInformation(recoveredAccount.addr).do();
     const assets =  accountInfo["assets"];
-    for (const asset in assets) {
-      if (asset["asset-id"] === ASSET_ID) {
-        const amount = asset["amount"];
- 
+    
+    //get choice amount from assets
+     assets.map(asset => {
+        if (asset['asset-id'] === ASSET_ID) {
+            const amount = asset["amount"];
+            const formattedAmount = amount / 100;
+            console.log(
+                `Account ${recoveredAccount.addr} has ${formattedAmount} $choice`
+              );
+              return;
+        }  else {
+            console.log(`Account ${recoveredAccount.addr} must opt in to Choice Coin Asset ID ${ASSET_ID}`);
+          }
+     })
+      
         
-        const assetInfo = await algodClient.getAssetByID(ASSET_ID);
-        const decimals = assetInfo["params"]["decimals"];
-        const unit = assetInfo["params"]["unit-name"];
-        const formattedAmount = amount / 10 ** decimals;
+    
+        
 
-        console.log(
-          `Account ${recoveredAccount.addr} has ${formattedAmount} ${unit}`
-        );
-        return;
-      }
-    }
-console.log(`Account ${recoveredAccount.addr} must opt in to Choice Coin Asset ID ${ASSET_ID}`);
+    
+    
+
   };
 
 checkResult();
