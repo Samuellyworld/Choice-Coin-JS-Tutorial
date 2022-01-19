@@ -73,7 +73,7 @@ const chooseVotingOption = async () => {
             voting_address,
             undefined,
             undefined,
-            amount,
+            Number(amount),
             encoder.encode("Voting with Choice coin"),
             ASSET_ID,
             params
@@ -81,6 +81,8 @@ const chooseVotingOption = async () => {
     let signedTxn = algosdk.signTransaction(txn, recoveredAccount.sk);
     const response =  algodClient.sendRawTransaction(signedTxn.blob).do();
     console.log(`You just voted for candidate One,Your voting ID: ${response.txId}`);
+     // wait for confirmation
+     waitForConfirmation(algodClient, response.txId);
     }
     catch(error) {
         console.log("Error voting for candidate One, Try again later");
