@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "This is a choice coin js tutorial app for voting",
   "main": "index.js",
-  "type" : "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "algosdk": "^1.13.0",
-    "inquirer": "^8.2.0"
+    "inquirer": "^8.2.0",
+    "prompt-sync": "^4.2.0"
   }
 }
