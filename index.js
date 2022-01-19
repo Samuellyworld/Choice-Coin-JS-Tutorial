@@ -56,6 +56,8 @@ const chooseVotingOption = async () => {
             let signedTxn = txn.signTxn(recoveredAccount.sk);
             const response =  await algodClient.sendRawTransaction(signedTxn).do();
          console.log(`You just voted for candidate Zero,Your voting ID: ${response.txId}`);
+         // wait for confirmation
+         waitForConfirmation(algodClient, response.txId);
         }
         catch(error) {
             console.log("error voting for candidate Zero, Try again later");
@@ -96,7 +98,7 @@ const waitForConfirmation = async function (algodClient, txId) {
         const pendingInfo = await algodClient.pendingTransactionInformation(txId).do();
         if (pendingInfo['confirmed-round'] !== null && pendingInfo['confirmed-round'] > 0) {
           //Got the completed Transaction
-          console.log('Transaction confirmed in round ' + pendingInfo['confirmed-round']);
+          console.log('Voting confirmed in round ' + pendingInfo['confirmed-round']);
           break;
         }
         lastround++;
@@ -106,7 +108,7 @@ const waitForConfirmation = async function (algodClient, txId) {
  
 
 // check account balance
-const checkResult = async () => {
+const checkBalance = async () => {
     
     
   //get the account information
@@ -117,9 +119,9 @@ const checkResult = async () => {
      assets.map(asset => {
         if (asset['asset-id'] === ASSET_ID) {
             const amount = asset["amount"];
-            const formattedAmount = amount / 100;
+            const choiceAmount = amount / 100;
             console.log(
-                `Account ${recoveredAccount.addr} has ${formattedAmount} $choice`
+                `Account ${recoveredAccount.addr} has ${choiceAmount} $choice`
               );
               return;
         }  else {
@@ -136,4 +138,4 @@ const checkResult = async () => {
 
   };
 
-checkResult();
+checkBalance();
