@@ -8,5 +8,5 @@
 
 ## Run Application On Your Local Machine
 
-### git clone the repository :
+* git clone the repository:
   $ git clone https://github.com/Samuellyworld/Choice-Coin-JS-Tutorial.git
