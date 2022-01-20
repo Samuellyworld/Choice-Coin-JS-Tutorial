@@ -33,3 +33,11 @@ const mnemonic = ""; //the mmemonic 25 characters seperated by a whitespace shou
 const voting_address = '' //input a voting address wallet you can send choice to, make sure choice is opt-in to receive votes
 
 ```
+* start the application 
+```
+$ node index.js
+```
+This can also been done with
+```
+$ npm start
+```
