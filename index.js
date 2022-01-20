@@ -21,7 +21,7 @@ const recoveredAccount = algosdk.mnemonicToSecretKey(mnemonic);
 const ASSET_ID = 21364625
 
 // voting address
-const voting_address = 'JJT4MJLJPNEWPO3B4DDTXP34B2DOVLIRY5O456M4T2I2RZUVWOC2ZCUSMQ' //input a voting address wallet you can send choice to, make sure choice is opt-in to receive votes
+const voting_address = '' //input a voting address wallet you can send choice to, make sure choice is opt-in to receive votes
 
 //Press '1' to vote for candidate 'one' and '0' to vote for candidate 'Zero"
 const chooseVotingOption = async () => {
