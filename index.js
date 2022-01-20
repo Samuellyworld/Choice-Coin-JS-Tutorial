@@ -78,11 +78,16 @@ const chooseVotingOption = async () => {
             ASSET_ID,
             params
         )
-    let signedTxn = algosdk.signTransaction(txn, recoveredAccount.sk);
-    const response =  algodClient.sendRawTransaction(signedTxn.blob).do();
-    console.log(`You just voted for candidate One,Your voting ID: ${response.txId}`);
-     // wait for confirmation
-     waitForConfirmation(algodClient, response.txId);
+        let signedTxn = txn.signTxn(recoveredAccount.sk);
+        const response =  await algodClient.sendRawTransaction(signedTxn).do();
+        if(response) {
+            console.log(`You just voted for candidate One,Your voting ID: ${response.txId}`);
+            // wait for confirmation
+            waitForConfirmation(algodClient, response.txId);
+        } else {
+            console.log('error voting for candidate one, try again later')
+        }
+    
     }
     catch(error) {
         console.log("Error voting for candidate One, Try again later");
