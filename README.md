@@ -22,3 +22,14 @@
 ```
  $ npm install
 ```
+* inside index.js, update the following 
+```
+const token = {
+  "X-API-Key": "" //your API key gotten from purestake API, 
+}
+
+const mnemonic = ""; //the mmemonic 25 characters seperated by a whitespace should be imported here
+
+const voting_address = '' //input a voting address wallet you can send choice to, make sure choice is opt-in to receive votes
+
+```
