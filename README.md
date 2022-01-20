@@ -13,3 +13,8 @@
 ```
   $ git clone https://github.com/Samuellyworld/Choice-Coin-JS-Tutorial.git
 ```
+* go into the application directory
+
+```
+ $ cd Choice-Coin-JS-Tutorial
+```
