@@ -1,4 +1,4 @@
-// all examples are portrayed using es6;
+// all examples are portrayed using commonJs;
 
 const algosdk = require('algosdk'); //importing algosdk
 const prompt = require('prompt-sync')(); //importing nodeJs  prompt to enable prompt in a nodeJs environment
