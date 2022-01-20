@@ -18,3 +18,7 @@
 ```
  $ cd Choice-Coin-JS-Tutorial
 ```
+* install app dependencies
+```
+ $ npm install
+```
