@@ -12,7 +12,7 @@ const token = {
 const algodClient = new algosdk.Algodv2(token, server, port); //connecting to algodclient
 
 // create a testnet account with myalgowallet, keep the mmemonic key;
-const mnemonic = 'exact sphere faith index property material trim trend bulk pelican whisper cancel wheel coffee slender high beyond humble entire unknown cattle property lens able guilt'; //the mmemonic 25 characters seperated by a whitespace should be imported here
+const mnemonic = ""; //the mmemonic 25 characters seperated by a whitespace should be imported here
 
 // get account from mmemonic key;
 const recoveredAccount = algosdk.mnemonicToSecretKey(mnemonic); 
