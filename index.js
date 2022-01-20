@@ -7,7 +7,7 @@ const prompt = require('prompt-sync')(); //importing nodeJs  prompt to enable pr
 const server = "https://testnet-algorand.api.purestake.io/ps2";
 const port = "";
 const token = {
-  "X-API-Key": "z6H94GE3sI8w100S7MyY92YMK5WIPAmD6YksRDsC" //your API key gotten from purestake API, 
+  "X-API-Key": "" //your API key gotten from purestake API, 
 };
 const algodClient = new algosdk.Algodv2(token, server, port); //connecting to algodclient
 
@@ -140,13 +140,6 @@ const checkBalance = async () => {
             console.log(`Account ${recoveredAccount.addr} must opt in to Choice Coin Asset ID ${ASSET_ID}`);
           }
      })
-      
-        
-    
-        
-
-    
-    
 
   };
 
