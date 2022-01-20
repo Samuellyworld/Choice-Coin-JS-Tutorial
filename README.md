@@ -22,7 +22,7 @@
 ```
  $ npm install
 ```
-* inside index.js, update the following 
+* inside `index.js`, update the following 
 ```
 const token = {
   "X-API-Key": "" //your API key gotten from purestake API, 
