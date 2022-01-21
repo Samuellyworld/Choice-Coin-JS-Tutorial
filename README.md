@@ -42,6 +42,10 @@ This can also been done with
 $ npm start
 ```
 
+## Live Demo 
+![visuals](https://github.com/Samuellyworld/Choice-Coin-JS-Tutorial/blob/main/demo_gif/tutorial.gif)
+
+
 ## Tutorial
 
 * [Algorand developer doc]()
