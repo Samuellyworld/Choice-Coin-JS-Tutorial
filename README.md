@@ -46,7 +46,7 @@ $ npm start
 ![visuals](https://github.com/Samuellyworld/Choice-Coin-JS-Tutorial/blob/main/demo_gif/tutorial.gif)
 
 
-## Tutorial
+## Tutorial links
 
 * [Algorand developer doc](https://developer.algorand.org/tutorials/build-a-decentralized-voting-app-with-choice-coin-and-javascript-sdk/)
 * [coins bench](https://coinsbench.com/build-a-decentralized-voting-app-with-choice-coin-and-javascript-algorand-sdk-using-nodejs-1a0101ec0d75)
